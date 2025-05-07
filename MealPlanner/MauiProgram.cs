@@ -44,6 +44,9 @@ namespace MealPlanner
             builder.Services.AddTransient<RecipesPage>();
             builder.Services.AddTransient<RecipesViewModel>();
 
+            builder.Services.AddSingleton<RecipeDatabaseService>();
+
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
