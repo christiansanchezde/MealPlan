@@ -6,12 +6,12 @@ namespace MealPlanner.ViewModel;
 public partial class MainViewModel : BaseViewModel
 {
 
-    //public MainViewModel(RecipeDatabaseService recipesDatabase)
-    //{
-    //    _recipesDatabase = recipesDatabase;
-    //}
+    public MainViewModel(RecipeService recipesDatabase)
+    {
+        _recipesDatabase = recipesDatabase;
+    }
 
-    private RecipeDatabaseService _recipesDatabase;
+    private RecipeService _recipesDatabase;
 
     [ObservableProperty]
     ObservableCollection<string>? items;

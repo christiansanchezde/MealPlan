@@ -1,10 +1,18 @@
-﻿namespace MealPlanner.Model;
-public class Recipe
+﻿namespace MealPlanner.Model
 {
-    [PrimaryKey, AutoIncrement]
-    public int ID { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public string PicturePath { get; set; } = string.Empty;
-    public string Preparation { get; set; } = string.Empty;
-    public int Portions { get; set; }
+    public class Recipe
+    {
+        public required string Name { get; set; }
+        public required string Description { get; set; }
+        public required string Preparation { get; set; }
+        public required List<Ingredient> Ingredients { get; set; }
+
+        public Recipe(string name, string description, string preparation, List<Ingredient> ingredients)
+        {
+            Name = name;
+            Description = description;
+            Preparation = preparation;
+            Ingredients = ingredients ?? new List<Ingredient>();
+        }
+    }
 }

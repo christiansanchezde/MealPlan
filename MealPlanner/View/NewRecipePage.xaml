@@ -92,7 +92,7 @@
         SelectionMode="None"
         EmptyView="No ingredients added yet">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:IngredientInfo">
+                    <DataTemplate x:DataType="model:Ingredient">
                         <Grid Padding="6">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*" />

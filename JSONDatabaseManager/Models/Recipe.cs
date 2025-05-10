@@ -8,9 +8,9 @@ namespace JSONDatabaseManager.Models
 {
     public class Recipe
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Preparation { get; set; }
-        public List<Ingredient> Ingredients { get; set; }
+        public required string Name { get; set; }
+        public required string Description { get; set; }
+        public required string Preparation { get; set; }
+        public required List<Ingredient> Ingredients { get; set; }
     }
 }

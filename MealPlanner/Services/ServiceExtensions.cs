@@ -13,7 +13,7 @@ public static class ServiceExtensions
         Log.Verbose("Initializing database");
         try
         {            
-            RecipeDatabaseService dbService = new RecipeDatabaseService();            
+            RecipeService dbService = new RecipeService();            
         }
         catch (Exception ex)
         {
@@ -21,7 +21,7 @@ public static class ServiceExtensions
         }
 
         Log.Verbose("Adding database service to builder");
-        builder.Services.AddSingleton<RecipeDatabaseService>();
+        builder.Services.AddSingleton<RecipeService>();
 
         Log.Debug("Services configuration Complete");
         // Services add 

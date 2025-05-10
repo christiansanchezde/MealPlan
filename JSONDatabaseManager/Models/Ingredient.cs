@@ -2,9 +2,9 @@
 {
     public class Ingredient
     {
-        public string Name { get; set; }
-        public string Location { get; set; }
-        public string Unit { get; set; }
-        public double Quantity { get; set; }
+        public required string Name { get; set; }
+        public required string Location { get; set; }
+        public required string Unit { get; set; }
+        public required double Quantity { get; set; }
     }
 }

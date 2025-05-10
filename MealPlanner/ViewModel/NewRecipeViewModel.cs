@@ -4,14 +4,16 @@ using CommunityToolkit.Mvvm.Input;
 using Serilog;
 using MealPlanner.Model;
 using MealPlanner.Services;
+using System.Threading.Tasks.Dataflow;
+using MealPlanner.Interfaces;
 
 namespace MealPlanner.ViewModel;
 
 public partial class NewRecipeViewModel : BaseViewModel
 {
-    private readonly RecipeDatabaseService _databaseService;
+    private readonly IRecipeService _databaseService;
 
-    public NewRecipeViewModel(RecipeDatabaseService databaseService)
+    public NewRecipeViewModel(RecipeService databaseService)
     {
         Title = "Create new recipe";
         _databaseService = databaseService;
@@ -23,11 +25,11 @@ public partial class NewRecipeViewModel : BaseViewModel
         }
 
         // Seed with a demo ingredient
-        Ingredients = new ObservableCollection<IngredientInfo>
+        Ingredients = new ObservableCollection<Ingredient>
         {
-            new("Flour", Unit.grams, 100),
-            new("Sugar", Unit.grams, 200),
-            new("Salt",  Unit.grams, 300)
+            new("Flour", SupermarketSection.Brot_Bakery , Unit.grams, 100),
+            new("Sugar", SupermarketSection.Brot_Bakery, Unit.grams, 200),
+            new("Salt",  SupermarketSection.Other, Unit.grams, 300)
         };
 
         // Load your ingredient list from the DB/service
@@ -47,7 +49,7 @@ public partial class NewRecipeViewModel : BaseViewModel
     [ObservableProperty]
     private string preparation;
 
-    public ObservableCollection<IngredientInfo> Ingredients { get; set; }
+    public ObservableCollection<Ingredient> Ingredients { get; set; }
 
     [ObservableProperty]
     private ObservableCollection<string> ingredientList = new();
@@ -81,7 +83,7 @@ public partial class NewRecipeViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    void RemoveIngredient(IngredientInfo ingredient)
+    void RemoveIngredient(Ingredient ingredient)
     {
         if (Ingredients.Contains(ingredient))
             Ingredients.Remove(ingredient);
